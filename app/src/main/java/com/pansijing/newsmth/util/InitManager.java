@@ -1,6 +1,7 @@
 package com.pansijing.newsmth.util;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -13,6 +14,8 @@ import com.tencent.bugly.crashreport.CrashReport;
  *      初始化模块，所有的初始化都放在这里
  */
 public final class InitManager {
+
+    private static final String TAG = InitManager.class.getSimpleName();
 
     private InitManager() {
 
@@ -27,7 +30,11 @@ public final class InitManager {
 
     private static void initAsync(Application application) {
 
+        Log.d(TAG, "initAsync: ");
+
         HttpManager.init();
+
+        GsonManager.init();
 
         LeakCanary.install(application);
 

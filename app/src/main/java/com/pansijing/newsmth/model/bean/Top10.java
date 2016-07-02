@@ -17,4 +17,8 @@ public class Top10 {
      * 连接
      */
     public String url;
+    /**
+     * 评论数
+     */
+    public int countOfComment;
 }

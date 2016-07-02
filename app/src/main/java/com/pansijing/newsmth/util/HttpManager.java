@@ -1,6 +1,6 @@
 package com.pansijing.newsmth.util;
 
-import retrofit2.Retrofit;
+import okhttp3.OkHttpClient;
 
 /**
  * @author zhuhuanhuan
@@ -10,19 +10,17 @@ import retrofit2.Retrofit;
  */
 public final class HttpManager {
 
-    static final String HOST = "http://m.newsmth.net";
+    public static final String HOST = "http://m.newsmth.net";
 
-    private static Retrofit mRetrofit = null;
+    private static OkHttpClient mOKHttpClient = null;
 
     private HttpManager() {}
 
     public static void init() {
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(HOST)
-                .build();
+        mOKHttpClient = new OkHttpClient();
     }
 
-    public static Retrofit getRetrofit() {
-        return mRetrofit;
+    public static OkHttpClient getOKHttpClient() {
+        return mOKHttpClient;
     }
 }

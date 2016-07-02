@@ -17,7 +17,7 @@ public class SMApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        enabledStrictMode();
+//        enabledStrictMode();
 
         InitManager.init(this);
     }
