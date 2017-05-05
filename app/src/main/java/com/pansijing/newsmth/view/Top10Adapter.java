@@ -1,6 +1,7 @@
 package com.pansijing.newsmth.view;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class Top10Adapter extends RecyclerView.Adapter<Top10Adapter.Top10ViewHolder> {
 
+  private static final String TAG = "Top10Adapter";
   List<Top10> mData;
 
   @Override public Top10ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,6 +47,11 @@ public class Top10Adapter extends RecyclerView.Adapter<Top10Adapter.Top10ViewHol
     Top10ViewHolder(View view) {
       super(view);
       item = (TextView) view.findViewById(R.id.item);
+      item.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          Log.e(TAG, "onClick: " + getAdapterPosition());
+        }
+      });
     }
   }
 }
