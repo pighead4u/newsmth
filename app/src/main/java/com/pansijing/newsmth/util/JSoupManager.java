@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author: zhuhuanhuan
  * @time: 16/7/2-下午1:00.
- * @email: zhuhuanhuan@qccr.com
+ * @email: zhuhuanhuan@hotmail.com
  * @desc: 把html页面的内容转成Java bean
  */
 public final class JSoupManager {

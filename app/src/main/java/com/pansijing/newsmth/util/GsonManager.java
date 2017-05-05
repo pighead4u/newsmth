@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 /**
  * @author: zhuhuanhuan
  * @time: 16/7/2-下午1:28.
- * @email: zhuhuanhuan@qccr.com
+ * @email: zhuhuanhuan@hotmail.com
  * @desc:
  */
 public final class GsonManager {

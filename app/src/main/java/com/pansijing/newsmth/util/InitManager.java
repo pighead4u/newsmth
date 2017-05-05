@@ -9,7 +9,7 @@ import com.tencent.bugly.crashreport.CrashReport;
 /**
  * @author zhuhuanhuan
  * @time 2016/7/2
- * @email zhuhuanhuan@qccr.com
+ * @email zhuhuanhuan@hotmail.com
  * @desc
  *      初始化模块，所有的初始化都放在这里
  */

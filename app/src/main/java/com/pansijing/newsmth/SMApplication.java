@@ -8,7 +8,7 @@ import com.pansijing.newsmth.util.InitManager;
 /**
  * @author zhuhuanhuan
  * @time 2016/7/2
- * @email zhuhuanhuan@qccr.com
+ * @email zhuhuanhuan@hotmail.com
  * @desc 水木客户端application
  */
 public class SMApplication extends Application {
@@ -17,7 +17,7 @@ public class SMApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-//        enabledStrictMode();
+        enabledStrictMode();
 
         InitManager.init(this);
     }
