@@ -36,8 +36,9 @@ public class MainPresentor {
   }
 
   public void getTop10() {
-    Observable.create(new ObservableOnSubscribe<String>() {
-      @Override public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Exception {
+    Observable.create(new ObservableOnSubscribe<List<Top10>>() {
+      @Override public void subscribe(@NonNull ObservableEmitter<List<Top10>> emitter)
+          throws Exception {
         OkHttpClient client = HttpManager.getOKHttpClient();
         Request request = new Request.Builder().url(HttpManager.HOST).build();
 
@@ -45,16 +46,15 @@ public class MainPresentor {
           Response response = client.newCall(request).execute();
           String data = response.body().string();
           List<Top10> top10List = JSoupManager.convert2Top10(data);
-          emitter.onNext(GsonManager.getGson().toJson(top10List));
+          emitter.onNext(top10List);
         } catch (IOException e) {
           Log.e(TAG, "call: " + e);
         }
       }
     })
         .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<String>() {
-          @Override public void accept(@NonNull String s) throws Exception {
+        .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<Top10>>() {
+      @Override public void accept(@NonNull List<Top10> s) throws Exception {
             iMain.getTop10Success(s);
           }
         }, new Consumer<Throwable>() {
