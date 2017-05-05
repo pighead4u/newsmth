@@ -5,6 +5,12 @@ import android.util.Log;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author zhuhuanhuan
@@ -28,17 +34,29 @@ public final class InitManager {
         initSynch(application);
     }
 
-    private static void initAsync(Application application) {
+    private static void initAsync(final Application application) {
 
         Log.d(TAG, "initAsync: ");
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override public void subscribe(@NonNull ObservableEmitter<Boolean> emitter)
+                throws Exception {
+                HttpManager.init();
 
-        HttpManager.init();
+                GsonManager.init();
 
-        GsonManager.init();
+                LeakCanary.install(application);
 
-        LeakCanary.install(application);
+                CrashReport.initCrashReport(application, "900036889", false);
 
-        CrashReport.initCrashReport(application, "900036889", false);
+                emitter.onNext(true);
+            }
+        }).subscribeOn(Schedulers.io()).subscribe(new Consumer<Boolean>() {
+            @Override public void accept(@NonNull Boolean aBoolean) throws Exception {
+                Log.e(TAG, "accept: success");
+            }
+        });
+
+
     }
 
     private static void initSynch(Application application) {}
