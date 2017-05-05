@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pansijing.commmon"
+    >
+
+  <application
+      android:supportsRtl="true"
+      >
+
+  </application>
+
+</manifest>
